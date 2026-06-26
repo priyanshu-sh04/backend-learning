@@ -13,7 +13,9 @@ const asyncHandler = (fn) => async (req, res, next) => {
     }
 }
 
-module.exports = asyncHandler
+export { asyncHandler }
+
+
 
 // A wraaper function using promises - advance
 

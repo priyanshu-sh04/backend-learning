@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
+import mongoose from "mongoose";
+import jwt from "jsonwebtoken"
+import bcrypt from "bcrypt"
 
 const userSchema = new mongoose.Schema(
     {
@@ -99,6 +99,5 @@ userSchema.methods.genrateRefreshToken = function () {
         }
 )}
 
-const userModel = mongoose.model("User", userSchema)
+export const User = mongoose.model("User", userSchema)
 
-module.exports = userModel
