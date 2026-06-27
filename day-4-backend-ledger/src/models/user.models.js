@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, {Schema} from "mongoose";
 import jwt from "jsonwebtoken"
 import bcrypt from "bcrypt"
 
@@ -59,11 +59,12 @@ const userSchema = new mongoose.Schema(
 )
 
 // mongoose hook  for storing Encrypted password 
-userSchema.pre("save", async function (next) {
+userSchema.pre("save", async function () {
+    console.log("PRE SAVE HOOK:", this.password) 
     if (!this.isModified("password")) return next()
 
-    this.password = bcrypt.hash(this.password, 10)
-    next()
+    console.log(this.password = await bcrypt.hash(this.password, 10));
+    
 
 })
 // checking password 
